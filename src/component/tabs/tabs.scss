@@ -1,0 +1,35 @@
+.tabs {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
+.tabs__button {
+    border: 1px solid #DFE5EC;
+    width: 170px;
+    height: 50px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+
+    color: #4A4A4A;
+
+    background-color: #FFFFFF;
+}
+
+.tabs__button--left {
+    border-radius: 5px 0 0 5px;
+}
+
+.tabs__button--right {
+    border-radius: 0 5px 5px 0;
+}
+
+.tabs__button--active {
+    background-color: #2196F3;
+    color: #FFFFFF;
+}
