@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 
 import Checkbox from '../checkbox/checkbox'
 
+import {
+  setFiltersShowAll,
+  setFiltersWithotTransfers,
+  setFiltersOneTransfer,
+  setFiltersTwoTransfer,
+  setFiltersThreeTransfer,
+} from './actions-filters'
+
 import './filters.scss'
 
 function Filters({
@@ -12,18 +20,24 @@ function Filters({
   showOneTransfer,
   showTwoTransfers,
   showThreeTransfers,
-  setFiltersShowAll,
-  setFiltersWithotTransfers,
-  setFiltersOneTransfer,
-  setFiltersTwoTransfer,
-  setFiltersThreeTransfer,
+  setShowAll,
+  setWithotTransfers,
+  setOneTransfer,
+  setTwoTransfer,
+  setThreeTransfer,
 }) {
   const options = [
-    { id: 1, name: 'Все', isActive: showAll, callback: setFiltersShowAll },
-    { id: 2, name: 'Без пересадок', isActive: showWithoutTransfers, callback: setFiltersWithotTransfers },
-    { id: 3, name: '1 пересадка', isActive: showOneTransfer, callback: setFiltersOneTransfer },
-    { id: 4, name: '2 пересадки', isActive: showTwoTransfers, callback: setFiltersTwoTransfer },
-    { id: 5, name: '3 пересадки', isActive: showThreeTransfers, callback: setFiltersThreeTransfer },
+    { id: 1, idCheckbox: 10000, name: 'Все', isActive: showAll, callback: setShowAll },
+    {
+      id: 2,
+      idCheckbox: 20000,
+      name: 'Без пересадок',
+      isActive: showWithoutTransfers,
+      callback: setWithotTransfers,
+    },
+    { id: 3, idCheckbox: 30000, name: '1 пересадка', isActive: showOneTransfer, callback: setOneTransfer },
+    { id: 4, idCheckbox: 40000, name: '2 пересадки', isActive: showTwoTransfers, callback: setTwoTransfer },
+    { id: 5, idCheckbox: 50000, name: '3 пересадки', isActive: showThreeTransfers, callback: setThreeTransfer },
   ]
 
   const filterItems = options.map((item) => {
@@ -50,11 +64,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFiltersShowAll: () => dispatch({ type: 'SHOW_ALL' }),
-    setFiltersWithotTransfers: () => dispatch({ type: 'WITHOUT_TRANSFERS' }),
-    setFiltersOneTransfer: () => dispatch({ type: '1_TRANSFER' }),
-    setFiltersTwoTransfer: () => dispatch({ type: '2_TRANSFER' }),
-    setFiltersThreeTransfer: () => dispatch({ type: '3_TRANSFER' }),
+    setShowAll: () => dispatch(setFiltersShowAll()),
+    setWithotTransfers: () => dispatch(setFiltersWithotTransfers()),
+    setOneTransfer: () => dispatch(setFiltersOneTransfer()),
+    setTwoTransfer: () => dispatch(setFiltersTwoTransfer()),
+    setThreeTransfer: () => dispatch(setFiltersThreeTransfer()),
   }
 }
 

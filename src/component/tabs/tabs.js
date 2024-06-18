@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+import { setSortCheapest, setSortFastest, setSortOptimum } from './actions-tabs'
 import './tabs.scss'
 
-function Tabs({ sortChepeast, sortFastest, sortOptimum, setSortCheapest, setSortFastest, setSortOptimum }) {
+function Tabs({ sortChepeast, sortFastest, sortOptimum, setCheapest, setFastest, setOptimum }) {
   const tabsItems = [
-    { id: 1, name: 'Самый дешевый', isActive: sortChepeast, callback: setSortCheapest },
-    { id: 2, name: 'Самый быстрый', isActive: sortFastest, callback: setSortFastest },
-    { id: 3, name: 'Оптимальный', isActive: sortOptimum, callback: setSortOptimum },
+    { id: 1, name: 'Самый дешевый', isActive: sortChepeast, callback: setCheapest },
+    { id: 2, name: 'Самый быстрый', isActive: sortFastest, callback: setFastest },
+    { id: 3, name: 'Оптимальный', isActive: sortOptimum, callback: setOptimum },
   ]
 
   const tabsButtons = tabsItems.map((item, index) => {
@@ -31,14 +33,14 @@ function Tabs({ sortChepeast, sortFastest, sortOptimum, setSortCheapest, setSort
 }
 
 const mapStateToProps = (state) => {
-  return state.tabs
+  return state.tickets
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSortCheapest: () => dispatch({ type: 'SET_CHEAPEST' }),
-    setSortFastest: () => dispatch({ type: 'SET_FASTEST' }),
-    setSortOptimum: () => dispatch({ type: 'SET_OPTIMUM' }),
+    setCheapest: () => dispatch(setSortCheapest()),
+    setFastest: () => dispatch(setSortFastest()),
+    setOptimum: () => dispatch(setSortOptimum()),
   }
 }
 
